@@ -1,0 +1,35 @@
+{
+    "name": "olfat/promoted-product",
+    "description": "plugin to choose product to promote",
+    "license": "GPL-3.0+",
+	"version": "1.0.0",
+	"keywords": [
+		"wordpress",
+		"plugin"
+	],
+	"require": {
+		"php": ">=8.2.0"
+	},
+	"homepage": "https://github.com/olfat123/promote_product",
+	"require-dev": {
+		"wp-coding-standards/wpcs": "^2.3",
+		"phpcompatibility/phpcompatibility-wp": "^2.1"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+    "type": "composer-plugin",
+    "authors": [
+        {
+            "name": "olfat123",
+            "email": "olfatrashad88@gmail.com"
+        }
+    ],
+	"autoload": {
+		"psr-4": {
+			"PromotedProduct\\": "src/"
+		}
+	}
+}
