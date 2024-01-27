@@ -35,16 +35,12 @@ if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins',
  * Bootstrap the plugin.
  */
 require_once 'vendor/autoload.php';
-require_once untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/inc/promoted-settings-tab-functions.php';
-require_once untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/inc/single-product-functions.php';
-require_once untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/inc/custom-functions.php';
-require_once untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/inc/template.php';
-require_once untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/inc/assets.php';
+require_once untrailingslashit( plugin_dir_path( __FILE__ ) ) . '/src/inc/custom-functions.php';
 
-use PromotedProduct\Plugin;
+use PromotedProduct\PromotedPlugin;
 
-if ( class_exists( 'PromotedProduct\Plugin' ) ) {
-	$the_plugin = new Plugin();
+if ( class_exists( 'PromotedProduct\PromotedPlugin' ) ) {
+	$the_plugin = new PromotedPlugin();
 }
 
 register_activation_hook( __FILE__, [ $the_plugin, 'activate' ] );

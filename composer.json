@@ -20,7 +20,7 @@
 			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	},
-    "type": "composer-plugin",
+    "type": "wordpress-plugin",
     "authors": [
         {
             "name": "olfat123",
