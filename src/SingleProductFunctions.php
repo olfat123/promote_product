@@ -75,43 +75,6 @@ class SingleProductFunctions {
 
     }
 
-    // Enqueue jQuery UI Datepicker script
-    public function enqueue_datepicker_script() {
-        wp_enqueue_script('jquery-ui-datepicker');
-    }
-
-    // Initialize Datepicker
-    public function initialize_datepicker() {
-        ?>
-        <script>
-            jQuery(function($) {
-                $('.datepicker').datepicker({
-                    dateFormat: 'yy-mm-dd',
-                    showTime: true, // You can customize this based on your requirements
-                    controlType: 'select',
-                    oneLine: true,
-                    timeFormat: 'HH:mm',
-                    stepMinute: 5
-                });
-            });
-            jQuery(document).ready(function($) {
-                $("#_will_expire").change(function(){
-                    if ($(this).prop('checked')) {
-                        $('.picker_container').show();
-                    } else {
-                        $('.picker_container').hide();
-                    }
-                });
-                if ($('#_will_expire').prop('checked')) {
-                    $('.picker_container').show();
-                } else {
-                    $('.picker_container').hide();
-                }
-            });
-        </script>
-        <?php
-    }
-
     // Save custom fields
     public function save_custom_product_settings_fields($post_id) {
         // Save custom text field
