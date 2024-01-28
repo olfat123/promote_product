@@ -1,0 +1,12 @@
+#promoted_heading_field{
+    width: 40%;
+    margin-left: 50px;
+}
+
+#promoted_text_color{
+    margin-left: 50px;
+}
+
+.promoted_options_group label{
+    font-weight: 700;
+}

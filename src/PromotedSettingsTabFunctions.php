@@ -54,7 +54,7 @@ class PromotedSettingsTabFunctions {
         $promoted_heading_field = get_option( 'promoted_heading_field');
         $promoted_background_color = get_option( 'promoted_background_color');
         $promoted_text_color = get_option( 'promoted_text_color');
-        echo '<div class="options_group">';
+        echo '<div class="promoted_options_group">';
             // Add a text field
             woocommerce_wp_text_input(
                 array(
@@ -96,7 +96,7 @@ class PromotedSettingsTabFunctions {
             $promoted_product = get_promoted_product();
             $product_edit_link = get_edit_post_link($promoted_product);
             if($promoted_product){
-                echo "<br><span>The promoted product is </span> : <a href='".esc_url($product_edit_link)."'>".get_the_title($promoted_product)."</a>";
+                echo "<br><label>The promoted product is </label> : <a href='".esc_url($product_edit_link)."'>".get_the_title($promoted_product)."</a>";
             }
             echo '</div>';
             

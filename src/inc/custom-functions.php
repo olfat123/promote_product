@@ -46,7 +46,5 @@
     }
     
     // Output the post ID
-    return $latest_promoted_post_id;
-    
-		
+    return $latest_promoted_post_id;   		
 }

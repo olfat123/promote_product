@@ -78,7 +78,6 @@ class SingleProductFunctions {
     // Enqueue jQuery UI Datepicker script
     public function enqueue_datepicker_script() {
         wp_enqueue_script('jquery-ui-datepicker');
-
     }
 
     // Initialize Datepicker
