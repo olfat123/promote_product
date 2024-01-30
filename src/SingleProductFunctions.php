@@ -57,11 +57,11 @@ class SingleProductFunctions {
 				'cbvalue'     => 1,
 			)
 		);
-		// echo "<div class='picker_container' style='display:none' >"
+		echo "<div class='picker_container' style='display:none' >";
 		echo "<p class='form-field'>";
 		echo '<label>Expiration date</label>';
 		echo "<input type='datetime-local' id='promotion_expiration_date' name='promotion_expiration_date' value='" . $promotion_expiration_date . "'></p>";
-		echo '</div>';
+		echo '</div></div>';
 	}
 
 	// Save custom fields

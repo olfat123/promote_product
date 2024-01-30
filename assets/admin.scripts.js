@@ -1,13 +1,3 @@
-jQuery(function($) {
-    $('.datepicker').datepicker({
-        dateFormat: 'yy-mm-dd',
-        showTime: true, // You can customize this based on your requirements
-        controlType: 'select',
-        oneLine: true,
-        timeFormat: 'HH:mm',
-        stepMinute: 5
-    });
-});
 jQuery(document).ready(function($) {
     $("#_will_expire").change(function(){
         if ($(this).prop('checked')) {
