@@ -103,11 +103,14 @@ class PromotedSettingsTabFunctions {
 					'value'       => $promoted_text_color,
 				)
 			);
-			$functions         = new Functions();
-			$promoted_product  = $functions->get_promoted_product();
-			$product_edit_link = get_edit_post_link( $promoted_product );
+			$functions        = new Functions();
+			$promoted_product = $functions->get_promoted_product();
+			$product_id       = $promoted_product->get_id();
+
+			// Get product edit page link
+			$product_edit_link = get_edit_post_link( $product_id );
 		if ( $promoted_product ) {
-			echo "<br><label>The promoted product is </label> : <a href='" . esc_url( $product_edit_link ) . "'>" . get_the_title( $promoted_product ) . '</a>';
+			echo "<br><label>The promoted product is </label> : <a href='" . esc_url( $product_edit_link ) . "'>" . $promoted_product->get_title() . '</a>';
 		}
 			echo '</div>';
 	}

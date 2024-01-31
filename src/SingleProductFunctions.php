@@ -61,9 +61,21 @@ class SingleProductFunctions {
 			)
 		);
 		echo "<div class='picker_container' style='display:none' >";
-		echo "<p class='form-field'>";
-		echo '<label>Expiration date</label>';
-		echo "<input type='datetime-local' id='promotion_expiration_date' name='promotion_expiration_date' value='" . $promotion_expiration_date . "'></p>";
+
+        woocommerce_wp_text_input(
+			array(
+				'id'          => 'promotion_expiration_date',
+				'label'       => __( 'Expiration date', 'promoted' ),
+				'placeholder' => '',
+                'type'        => 'datetime-local',
+				'desc_tip'    => 'true',
+				'value'       => $promotion_expiration_date,
+				'description' => __( 'promotion_expiration_date.', 'promoted' ),
+			)
+		);
+		// echo "<p class='form-field'>";
+		// echo '<label>Expiration date</label>';
+		// echo "<input type='datetime-local' id='promotion_expiration_date' name='promotion_expiration_date' value='" . $promotion_expiration_date . "'></p>";
 		echo '</div></div>';
 	}
 
