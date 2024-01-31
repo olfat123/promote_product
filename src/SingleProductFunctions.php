@@ -8,6 +8,9 @@
 
 namespace PromotedProduct;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /**
  * Class SingleProductFunctions.
  */

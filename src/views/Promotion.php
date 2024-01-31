@@ -10,6 +10,10 @@ namespace PromotedProduct\views;
 
 use PromotedProduct\inc\Functions;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class Promotion.
  */

@@ -9,6 +9,10 @@ namespace PromotedProduct;
 
 use PromotedProduct\views\Promotion;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class PromotedPlugin.
  */

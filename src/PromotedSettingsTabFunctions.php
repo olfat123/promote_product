@@ -10,6 +10,9 @@ namespace PromotedProduct;
 
 use PromotedProduct\inc\Functions;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /**
  * Class PromotedSettingsTabFunctions.
  */

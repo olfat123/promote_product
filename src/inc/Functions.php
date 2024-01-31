@@ -8,6 +8,9 @@
 
 namespace PromotedProduct\inc;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 /**
  * Class Functions.
  */
