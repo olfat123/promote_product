@@ -8,6 +8,8 @@
 
 namespace PromotedProduct;
 
+use PromotedProduct\inc\Functions;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -62,12 +64,12 @@ class SingleProductFunctions {
 		);
 		echo "<div class='picker_container' style='display:none' >";
 
-        woocommerce_wp_text_input(
+		woocommerce_wp_text_input(
 			array(
 				'id'          => 'promotion_expiration_date',
 				'label'       => __( 'Expiration date', 'promoted' ),
 				'placeholder' => '',
-                'type'        => 'datetime-local',
+				'type'        => 'datetime-local',
 				'desc_tip'    => 'true',
 				'value'       => $promotion_expiration_date,
 				'description' => __( 'promotion_expiration_date.', 'promoted' ),
@@ -86,7 +88,12 @@ class SingleProductFunctions {
 		update_post_meta( $post_id, 'promotion_custom_title', $promotion_custom_title );
 
 		// Save custom checkbox
-		$is_promoted = isset( $_POST['_is_promoted'] ) ? 'yes' : 'no';
+		$is_promoted              = isset( $_POST['_is_promoted'] ) ? 'yes' : 'no';
+		$functions                = new Functions();
+		$current_promoted_product = $functions->get_promoted_product();
+		if ( $current_promoted_product ) {
+			update_post_meta( $current_promoted_product->get_id(), '_is_promoted', 'no' );
+		}
 		update_post_meta( $post_id, '_is_promoted', $is_promoted );
 
 		$will_expire = isset( $_POST['_will_expire'] ) ? 'yes' : 'no';

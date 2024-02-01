@@ -22,12 +22,14 @@ class Functions {
 
 	public function get_promoted_product() {
 
-		$args = array(
-			'limit'  => 1,
-			'status' => 'publish',
-		);
+		$products = wc_get_products(
+			array(
+				'promoted_only'  => true,
+				'posts_per_page' => 1,
+				'post_status'    => 'publish',
 
-		$products = wc_get_products( $args );
+			)
+		);
 		if ( $products > 0 ) {
 			$latest_promoted_post = $products[0];
 		} else {
@@ -39,44 +41,49 @@ class Functions {
 		return $latest_promoted_post;
 	}
 
+
+
 	/**
-	 * Add a filter to modify the product query.
+	 * Handle a custom meta query vars to get products.
 	 *
 	 * @param array $query - Args for WP_Query.
 	 * @param array $query_vars - Query vars from WC_Product_Query.
 	 * @return array modified $query
 	 */
-	public function custom_add_meta_query_to_product_query( $query ) {
-		// Add your custom meta query parameters
-		$meta_query = array(
-			'relation' => 'AND',
-			array(
-				'key'     => '_is_promoted',
-				'value'   => 'yes',
-				'compare' => '=',
-			),
-			array(
-				'relation' => 'OR',
+	function custom_add_meta_query_to_product_query( $query, $query_vars ) {
+		if ( isset( $query_vars['promoted_only'] ) && $query_vars['promoted_only'] ) {
+			$query['meta_query'][] = array(
+				'relation' => 'AND',
 				array(
-					'key'     => 'promotion_expiration_date',
-					'value'   => date( 'Y-m-d' ), // Current date
-					'compare' => '>=',
-					'type'    => 'DATE',
-				),
-				array(
-					'key'     => '_will_expire',
-					'value'   => 'no',
+					'key'     => '_is_promoted',
+					'value'   => 'yes',
 					'compare' => '=',
 				),
-			),
-		);
-
-		// Merge with existing meta query if any
-		if ( isset( $query['meta_query'] ) ) {
-			$meta_query = array_merge( $meta_query, $query['meta_query'] );
+				array(
+					'relation' => 'OR',
+					array(
+						'key'     => 'promotion_expiration_date',
+						'value'   => date( 'Y-m-d' ), // Current date
+						'compare' => '>=',
+						'type'    => 'DATE',
+					),
+					array(
+						'key'     => '_will_expire',
+						'value'   => 'no',
+						'compare' => '=',
+					),
+				),
+			);
 		}
 
-		$query['meta_query'] = $meta_query;
+		// Add limit per page parameter
+		if ( isset( $query_vars['posts_per_page'] ) ) {
+			$query['posts_per_page'] = $query_vars['posts_per_page'];
+		}
+		// Add status parameter
+		if ( isset( $query_vars['post_status'] ) ) {
+			$query['post_status'] = $query_vars['post_status'];
+		}
 
 		return $query;
 	}
